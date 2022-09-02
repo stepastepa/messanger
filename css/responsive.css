@@ -1,0 +1,42 @@
+/* @media screen and (min-width: 801px) {
+
+    .app.fullscreen .chat-message-row.sent {
+        justify-content: flex-start;
+    }
+
+    .app.fullscreen .chat-message-row.sent .message-container {
+        margin-left: 45px;
+    }
+
+    .app.fullscreen .chat-message-row.sent .message-text {
+        background: hsl(223, 9%, 35%);
+        border-radius: 0 10px 10px 10px;
+    }
+    .app.fullscreen .chat-message-row.sent .message-name-container {
+        justify-content: flex-start;
+    }
+
+    .app.fullscreen .message-container {
+        max-width: 558px;
+    }
+
+} */
+
+.chat.toowide .chat-message-row.sent {
+    justify-content: flex-start;
+}
+
+.chat.toowide .chat-message-row.sent .message-container {
+    margin-left: 45px;
+}
+
+.chat.toowide .chat-message-row.sent .message-text {
+    border-radius: 0 10px 10px 10px;
+}
+.chat.toowide .chat-message-row.sent .message-name-container {
+    justify-content: flex-start;
+}
+
+.chat.toowide .message-container {
+    max-width: 560px;
+}
