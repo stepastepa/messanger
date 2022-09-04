@@ -824,7 +824,7 @@ body {
     /* padding: 21px 18px; */
     width: var(--info-width);
     overflow: scroll;
-    margin-left: -2px;
+    margin-left: -4px;
 }
 
 /* __hide scrollbar__ */
