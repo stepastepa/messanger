@@ -49,23 +49,24 @@ for (const header of infoListHeaders) {
 
 const infoIconClose = document.querySelector(".info-icon-close");
 const chatIconMore = document.querySelector(".chat-icon-more");
-const infoSection = document.querySelector(".info");
+const infoSection = document.querySelector(".info-section");
 
 infoIconClose.onclick = function() {
-    infoSection.classList.add('hide');
+    infoSection.classList.add("hide");
 
     chatTransform();
 }
 
 chatIconMore.onclick = function() {
-    if(infoSection.className == "info") {
-        infoSection.classList.add('hide');
+    if(infoSection.className == "info-section") {
+        infoSection.classList.add("hide");
 
         chatTransform();
     } else {
-        infoSection.classList.remove('hide');
-        if(chatSection.offsetWidth < 400 && listSection.className == "list") {   
-            listSection.classList.add('hide');
+        infoSection.classList.remove("hide");
+        
+        if(chatSection.offsetWidth < 400 && listSection.className == "list-section") {   
+            listSection.classList.add("hide");
         }
         
         chatTransform();
@@ -77,19 +78,18 @@ chatIconMore.onclick = function() {
 
 
 const chatIconList = document.querySelector(".chat-icon-list");
-const listSection = document.querySelector(".list");
+const listSection = document.querySelector(".list-section");
 
 chatIconList.onclick = function() {
-    if (listSection.className == "list") {
-        // chatIconList.classList.add('closed');
-        listSection.classList.add('hide');
+    if (listSection.className == "list-section") {
+        listSection.classList.add("hide");
         
         chatTransform();
     } else {
-        // chatIconList.classList.remove('closed');
-        listSection.classList.remove('hide');
-        if(chatSection.offsetWidth < 400 && infoSection.className == "info") {   
-            infoSection.classList.add('hide');
+        listSection.classList.remove("hide");
+        
+        if(chatSection.offsetWidth < 400 && infoSection.className == "info-section") {   
+            infoSection.classList.add("hide");
         }
 
         chatTransform();
@@ -109,21 +109,22 @@ chatIconList.onclick = function() {
 
 const chatSection = document.querySelector(".chat");
 
-console.dir(chatSection);
+// console.dir(chatSection);
 
 window.addEventListener("resize", function () {
     if(window.innerWidth < 1000 && app.className == "app") {   
-        infoSection.classList.add('hide');
+        infoSection.classList.add("hide");
     }
 
     if(window.innerWidth < 750 && app.className == "app") {   
-        listSection.classList.add('hide');
+        listSection.classList.add("hide");
     }
 
     if(chatSection.offsetWidth < 400 && app.className == "app fullscreen") {   
-        infoSection.classList.add('hide');
+        infoSection.classList.add("hide");
+        
         if(chatSection.offsetWidth < 400 && app.className == "app fullscreen") {   
-            listSection.classList.add('hide');
+            listSection.classList.add("hide");
         }
     }
 
@@ -133,9 +134,9 @@ window.addEventListener("resize", function () {
 
 function chatTransform() {
     if(chatSection.offsetWidth > 736) {
-        chatSection.classList.add('toowide');
+        chatSection.classList.add("toowide");
     } else {
-        chatSection.classList.remove('toowide');
+        chatSection.classList.remove("toowide");
     }
 }
 
@@ -151,4 +152,58 @@ const html = document.querySelector("html");
 toggleTheme.onclick = function() {
     html.classList.toggle("day");
     html.classList.toggle("night");
+}
+
+
+
+////////////
+// resize //
+////////////
+
+const list = document.querySelector(".list");
+
+var clickArea = false;
+
+var mousePositionStart = 0;
+var mousePositionCurrent = 0;
+
+var mouseDragDistance = 0;
+var widthDifference = 0;
+var oldWidth = 0;
+var newWidth = 0;
+
+// mouse position Start
+resizeAreaList.addEventListener("mousedown", mouseStart);
+function mouseStart(event) {
+    oldWidth = list.offsetWidth;
+    // console.log(oldWidth);
+    clickArea = true;
+    mousePositionStart = event.clientX;
+    // console.log("click start:", mousePositionStart);
+    resizeAreaList.classList.add("hold");
+}
+
+
+// mouse position End
+document.addEventListener("mouseup", mouseEnd);
+function mouseEnd(event) {
+    resizeAreaList.classList.remove("hold");
+    if (clickArea == true) {
+        clickArea = false;
+    }
+}
+
+
+document.addEventListener("mousemove", calculateWidth);
+function calculateWidth(event) {
+    if (clickArea == true) {
+        mousePositionCurrent = event.clientX;
+        // console.log("curent X:", mousePositionCurrent);
+        widthDifference = mousePositionCurrent - mousePositionStart;
+        // console.log("difference:", widthDifference);
+        newWidth = oldWidth + widthDifference;
+        // console.log(newWidth);
+        list.style.width = newWidth + "px";
+        // console.log(list.style.width);
+    }     
 }

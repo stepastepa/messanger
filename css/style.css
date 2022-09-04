@@ -51,22 +51,6 @@ html.day {
     --font-regular-color-darker: hsla(255, 100%, 100%, 0.17);
 }
 
-.night .toggle-theme .icon-sun{
-    display: none;
-}
-
-.day .toggle-theme .icon-moon{
-    display: none;
-}
-
-.hide {
-    display: none;
-}
-
-.zero {
-    visibility: hidden;
-}
-
 /* //// Random Colors for Avatars //// */
 .turquoise { background: #1abc9c; }
 .emerland { background: #2ecc71; }
@@ -276,6 +260,14 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.night .toggle-theme .icon-sun{
+    display: none;
+}
+
+.day .toggle-theme .icon-moon{
+    display: none;
+}
+
 
 
 
@@ -286,12 +278,31 @@ body {
 
 /* //// list //// */
 
+.list-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.resizeArea {
+    width: 4px;
+    height: 100%;
+    background: none;
+    z-index: 99999;
+    cursor: ew-resize;
+}
+
+.resizeArea.hold{
+    background: #777;
+}
+
 .list {
     /* position: relative; */
     padding: 0 0 0 0; /* 24px 14px 24px 19px */
     background-color: var(--bg-medium-darker);
     width: 250px;
     overflow: scroll;
+    position: relative;
+    margin-right: -4px;
 }
 
 /* __hide scrollbar__ */
@@ -517,6 +528,7 @@ body {
 .chat {
     position: relative;
     width: 400px;
+    min-width: 360px;
     /* height: 100%; */
     background: var(--bg-light);
     /* border-left: 1px solid #333;
@@ -581,7 +593,7 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
-.list.hide + .chat .chat-icon-list {
+.list-section.hide + .chat .chat-icon-list {
     transform: rotate(180deg);
     transition: transform 0.3s ease-in-out;
 }
@@ -797,13 +809,22 @@ body {
 
 /* //// info //// */
 
+.info-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-section .resizeArea {
+    border-left: 1px solid hsla(0, 100%, 100%, 0.03);
+}
+
 .info {
     position: relative;
     background: var(--bg-light);
     /* padding: 21px 18px; */
     width: var(--info-width);
     overflow: scroll;
-    border-left: 1px solid hsla(0, 100%, 100%, 0.03);
+    margin-left: -2px;
 }
 
 /* __hide scrollbar__ */
@@ -1111,4 +1132,19 @@ body {
 .task-row .info-icon-bookmark:hover,
 .task-row .info-icon-download:hover {
     opacity: 100%;
+}
+
+
+
+
+
+
+
+
+.hide {
+    display: none;
+}
+
+.zero {
+    visibility: hidden;
 }
