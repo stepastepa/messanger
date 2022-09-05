@@ -205,5 +205,6 @@ function calculateWidth(event) {
         // console.log(newWidth);
         list.style.width = newWidth + "px";
         // console.log(list.style.width);
+        chatTransform();
     }     
 }
