@@ -175,20 +175,23 @@ var newWidth = 0;
 // mouse position Start
 resizeAreaList.addEventListener("mousedown", mouseStart);
 function mouseStart(event) {
-    oldWidth = list.offsetWidth;
-    // console.log(oldWidth);
-    clickArea = true;
-    mousePositionStart = event.clientX;
-    // console.log("click start:", mousePositionStart);
-    resizeAreaList.classList.add("hold");
+    if (app.classList.contains("fullscreen")) {
+        oldWidth = list.offsetWidth;
+        // console.log(oldWidth);
+        clickArea = true;
+        mousePositionStart = event.clientX;
+        // console.log("click start:", mousePositionStart);
+        resizeAreaList.classList.add("hold");
+    }
+    
 }
 
 
 // mouse position End
 document.addEventListener("mouseup", mouseEnd);
-function mouseEnd(event) {
+function mouseEnd() {
     resizeAreaList.classList.remove("hold");
-    if (clickArea == true) {
+    if (clickArea == true && app.classList.contains("fullscreen")) {
         clickArea = false;
     }
 }
@@ -196,7 +199,7 @@ function mouseEnd(event) {
 
 document.addEventListener("mousemove", calculateWidth);
 function calculateWidth(event) {
-    if (clickArea == true) {
+    if (clickArea == true && app.classList.contains("fullscreen")) {
         mousePositionCurrent = event.clientX;
         // console.log("curent X:", mousePositionCurrent);
         widthDifference = mousePositionCurrent - mousePositionStart;

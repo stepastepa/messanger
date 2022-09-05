@@ -281,6 +281,10 @@ body {
 .list-section {
     display: flex;
     flex-direction: row;
+    max-width: 250px;
+}
+.app.fullscreen .list-section {
+    max-width: calc(50% - 66px);
 }
 
 .resizeArea {
@@ -288,10 +292,11 @@ body {
     height: 100%;
     background: none;
     z-index: 99999;
+}
+.app.fullscreen .resizeArea {
     cursor: ew-resize;
 }
-
-.resizeArea.hold{
+.app.fullscreen .resizeArea.hold{
     background: #777;
 }
 
@@ -300,10 +305,14 @@ body {
     padding: 0 0 0 0; /* 24px 14px 24px 19px */
     background-color: var(--bg-medium-darker);
     width: 250px;
-    min-width: 200px;
+    min-width: 250px;
     overflow: scroll;
     position: relative;
     margin-right: -4px;
+}
+
+.app.fullscreen .list-section .list {
+    min-width: 220px;
 }
 
 /* __hide scrollbar__ */
