@@ -690,7 +690,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
-    max-width: 80%;
+    max-width: 450px;
 }
 
 .message-name-container {
@@ -730,6 +730,10 @@ body {
 }
 .chat-message-row.sent .message-name-container {
     justify-content: flex-end;
+}
+
+.chat-message-row.sent .list-avatar {
+    visibility: hidden;
 }
 
 

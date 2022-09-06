@@ -26,8 +26,8 @@
     justify-content: flex-start;
 }
 
-.chat.toowide .chat-message-row.sent .message-container {
-    margin-left: 45px;
+.chat.toowide .chat-message-row.sent .list-avatar {
+    visibility: visible;
 }
 
 .chat.toowide .chat-message-row.sent .message-text {
@@ -37,6 +37,3 @@
     justify-content: flex-start;
 }
 
-.chat.toowide .message-container {
-    max-width: 560px;
-}
