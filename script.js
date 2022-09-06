@@ -133,7 +133,7 @@ window.addEventListener("resize", function () {
 
 
 function chatTransform() {
-    if(chatSection.offsetWidth > 736) {
+    if(chatSection.offsetWidth > 750) {
         chatSection.classList.add("toowide");
     } else {
         chatSection.classList.remove("toowide");
